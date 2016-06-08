@@ -1,0 +1,5 @@
+lua-torch-torch7 (0~20160604-g69d7a01-1) experimental; urgency=low
+
+  * Initial release. Closes: #826532
+
+ -- Zhou Mo <cdluminate@gmail.com>  Mon, 06 Jun 2016 03:50:31 +0000

@@ -1,0 +1,15 @@
+Fix spelling
+
+Forwarded: not yet
+
+--- a/lib/TH/THDiskFile.c
++++ b/lib/TH/THDiskFile.c
+@@ -207,7 +207,7 @@
+   if (offset > -1)
+       return (size_t)offset;
+   else if(!dfself->file.isQuiet)
+-      THError("unable to obtain disk file offset (maybe a long overflow occured)");
++      THError("unable to obtain disk file offset (maybe a long overflow occurred)");
+ 
+   return 0;
+ }

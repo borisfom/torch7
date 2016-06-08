@@ -1,0 +1,101 @@
+Source: lua-torch-torch7
+Section: interpreters
+Priority: optional
+Maintainer: Zhou Mo <cdluminate@gmail.com>
+Build-Depends: cmake,
+               debhelper (>=9),
+               dh-lua,
+               lua5.1,
+# luajit (<= 2.0) suffers from compatibility problem, 
+# using luajit from experimental
+               luajit (>= 2.1.0~beta2),
+               lua-torch-cwrap,
+               lua-torch-paths,
+               libblas-dev | libblas.so,
+Standards-Version: 3.9.8
+Homepage: https://github.com/torch/torch7
+
+Package: lua-torch-torch7
+Architecture: any
+Multi-Arch: same
+# NOTE: users are expected to use luajit.
+# NOTE: this package won't support lua5.2 .
+Depends: ${misc:Depends}, ${shlibs:Depends}, luajit | lua5.1 ,
+         libtorch-th, libtorch-luat, lua-torch-cwrap,
+         lua-torch-paths,
+Suggests: luajit
+XB-Lua-Versions: ${lua:Versions}
+Description: Torch Package for Torch Framework
+ Torch is the main package in Torch7 where data structures for
+ multi-dimensional tensors and mathematical operations over these
+ are defined. Additionally, it provides many utilities for accessing
+ files, serializing objects of arbitrary types and other useful utilities.
+
+Package: lua-torch-torch7-dev
+Architecture: any
+Section: libdevel
+Multi-Arch: same
+Depends: ${misc:Depends}, ${shlibs:Depends}, luajit | lua5.1 ,
+         lua-torch-torch7 (= ${binary:Version})
+XB-Lua-Versions: ${lua:Versions}
+Description: Torch Package for Torch Framework (dev)
+ Torch is the main package in Torch7 where data structures for
+ multi-dimensional tensors and mathematical operations over these
+ are defined. Additionally, it provides many utilities for accessing
+ files, serializing objects of arbitrary types and other useful utilities.
+ .
+ This package contains development files.
+
+Package: libtorch-th
+Architecture: any
+Section: libs
+Multi-Arch: same
+Depends: ${misc:Depends}, ${shlibs:Depends},
+         libblas3 | libblas.so.3,
+         liblapack3 | liblapack.so.3,
+Description: libTH.so of Torch Package for Torch Framework
+ Torch is the main package in Torch7 where data structures for
+ multi-dimensional tensors and mathematical operations over these
+ are defined. Additionally, it provides many utilities for accessing
+ files, serializing objects of arbitrary types and other useful utilities.
+ .
+ This package contains libTH.so .
+
+Package: libtorch-th-dev
+Architecture: any
+Section: libdevel
+Multi-Arch: same
+Depends: ${misc:Depends}, ${shlibs:Depends}, libtorch-th (= ${binary:Version})
+Description: libTH.so of Torch Package for Torch Framework (dev)
+ Torch is the main package in Torch7 where data structures for
+ multi-dimensional tensors and mathematical operations over these
+ are defined. Additionally, it provides many utilities for accessing
+ files, serializing objects of arbitrary types and other useful utilities.
+ .
+ This package contains development files for libTH.so .
+
+Package: libtorch-luat
+Architecture: any
+Section: libs
+Multi-Arch: same
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: libluaT.so of Torch Package for Torch Framework
+ Torch is the main package in Torch7 where data structures for
+ multi-dimensional tensors and mathematical operations over these
+ are defined. Additionally, it provides many utilities for accessing
+ files, serializing objects of arbitrary types and other useful utilities.
+ .
+ This package contains libluaT.so .
+
+Package: libtorch-luat-dev
+Architecture: any
+Section: libdevel
+Multi-Arch: same
+Depends: ${misc:Depends}, ${shlibs:Depends}, libtorch-luat (= ${binary:Version})
+Description: libluaT.so of Torch Package for Torch Framework (dev)
+ Torch is the main package in Torch7 where data structures for
+ multi-dimensional tensors and mathematical operations over these
+ are defined. Additionally, it provides many utilities for accessing
+ files, serializing objects of arbitrary types and other useful utilities.
+ .
+ This package contains development files for libluaT.so .
