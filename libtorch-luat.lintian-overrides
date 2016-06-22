@@ -2,8 +2,3 @@
 # and libtorch-luat won't pollute the package name space,
 # which is better than the confusing "libluat"
 libtorch-luat: package-name-doesnt-match-sonames libluaT
-
-# upstream doesn't make release, and there is no SOVERSION
-libtorch-luat: shlib-without-versioned-soname
-libtorch-luat: dev-pkg-without-shlib-symlink
-

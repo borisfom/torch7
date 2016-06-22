@@ -2,7 +2,3 @@
 # is not a general library. I name it as libtorch-th
 # to avoid polluting package name space.
 libtorch-th: package-name-doesnt-match-sonames
-
-# upstream doesn't make releases, and there is no SOVERSION
-libtorch-th: dev-pkg-without-shlib-symlink
-libtorch-th: shlib-without-versioned-soname
