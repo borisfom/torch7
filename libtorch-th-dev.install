@@ -1,2 +1,2 @@
 usr/include/TH
-usr/lib/libTH.so.0 usr/lib/#DEB_HOST_MULTIARCH#/
+usr/lib/libTH.so usr/lib/#DEB_HOST_MULTIARCH#/
