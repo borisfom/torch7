@@ -77,6 +77,9 @@ override_dh_auto_install:
 	# install the rest lua stuff
 	dh_auto_install --buildsystem=lua
 
+override_dh_shlibdeps:
+	dh_shlibdeps -Llibtorch-th -Llibtorch-luat
+
 override_dh_auto_clean:
 	-$(RM) -rf TH.build/ luaT.build/ torch
 	-$(RM) -rf 5.1-torch-torch7/ 5.2-torch-torch7/
