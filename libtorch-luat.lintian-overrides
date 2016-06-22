@@ -1,4 +1,4 @@
 # this library is used as extension of lua-torch-torch7,
 # and libtorch-luat won't pollute the package name space,
 # which is better than the confusing "libluat"
-libtorch-luat: package-name-doesnt-match-sonames libluaT
+libtorch-luat: package-name-doesnt-match-sonames libluaT0
