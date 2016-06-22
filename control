@@ -7,8 +7,10 @@ Build-Depends: cmake,
                dh-lua,
                lua5.1,
 # luajit (<= 2.0) suffers from compatibility problem, 
-# using luajit from experimental
-               luajit (>= 2.1.0~beta2),
+# upstream recommends luajit (>= 2.1.0),
+# however loosen requirement to 2.0, temporarily
+#               luajit (>= 2.1.0~beta2),
+               luajit,
                lua-torch-cwrap,
                lua-torch-paths,
                libblas-dev | libblas.so,
