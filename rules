@@ -67,14 +67,6 @@ override_dh_auto_test:
 	set -e; cd deb.test; \
 		LD_LIBRARY_PATH=$(ROOTDIR)/deb.test \
 		$(LUAJIT) -e "require 'torch'; torch.test();"
-	# then we perform tests provided by upstream.
-	set -e; cd deb.test; $(LUAJIT) -e "require 'torch'; dofile('../test/longSize.lua')"
-	set -e; cd deb.test; $(LUAJIT) -e "require 'torch'; dofile('../test/test_qr.lua')"
-	#set -e; cd deb.test; $(LUAJIT) -e "require 'torch'; dofile('../test/test_Multinomial.lua')" # require 'sys'
-	set -e; cd deb.test; $(LUAJIT) -e "require 'torch'; dofile('../test/test_Tester.lua')"
-	#set -e; cd deb.test; $(LUAJIT) -e "require 'torch'; dofile('../test/test_sharedmem.lua')" # unknown error
-	set -e; cd deb.test; $(LUAJIT) -e "require 'torch'; dofile('../test/test_writeObject.lua')"
-	#set -e; cd deb.test; $(LUAJIT) -e "require 'torch'; dofile('../test/timeSort.lua')" # require 'gnuplot'
 	dh_auto_test
 
 override_dh_auto_install:
