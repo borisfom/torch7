@@ -1,4 +1,4 @@
-lua-torch-torch7 (0~20160604-g69d7a01-1) unstable; urgency=low
+lua-torch-torch7 (0~20160803-g17ff317-1) experimental; urgency=low
 
   * Initial release. Closes: #826532
 
