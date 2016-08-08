@@ -35,7 +35,7 @@ Package: lua-torch-torch7-dev
 Architecture: any
 Section: libdevel
 Multi-Arch: same
-Depends: ${misc:Depends}, ${shlibs:Depends}, luajit | lua5.1 ,
+Depends: ${misc:Depends}, ${shlibs:Depends},
          lua-torch-torch7 (= ${binary:Version})
 XB-Lua-Versions: ${lua:Versions}
 Description: Torch Package for Torch Framework (dev)
