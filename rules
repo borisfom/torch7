@@ -55,19 +55,8 @@ override_dh_auto_build:
 	dh_auto_build --buildsystem=cmake -B TH.build/ --parallel
 	# build libluaT.so
 	dh_auto_build --buildsystem=cmake -B luaT.build/ --parallel
-	# build the rest lua stuff
+	# build the rest lua stuff with dh-lua
 	dh_auto_build --buildsystem=lua
-
-override_dh_auto_test:
-	-$(RM) -rf deb.test
-	# prepare lua files to launch a "torch.test()"
-	set -e; if ! test -d deb.test/torch; then mkdir -p deb.test/torch; fi
-	set -e; find . -name '*.so*' -exec cp -v '{}' deb.test/ \;
-	set -e; find . -name '*.lua' -exec cp -v '{}' deb.test/torch/ \;
-	set -e; cd deb.test; \
-		LD_LIBRARY_PATH=$(ROOTDIR)/deb.test \
-		$(LUAJIT) -e "require 'torch'; torch.test();"
-	dh_auto_test
 
 override_dh_auto_install:
 	# install libTH.so
