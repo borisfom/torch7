@@ -6,14 +6,12 @@ Build-Depends: cmake,
                debhelper (>=9),
                dh-lua,
                lua5.1,
-# luajit (<= 2.0) suffers from compatibility problem, 
-# upstream recommends luajit (>= 2.1.0),
-# however loosen requirement to 2.0, temporarily
-#               luajit (>= 2.1.0~beta2),
-               luajit,
+# luajit (<= 2.0) suffers from compatibility problem, require higher version 
+               luajit (>= 2.1.0~beta2),
                lua-torch-cwrap,
                lua-torch-paths,
                libblas-dev | libblas.so,
+               liblapack-dev | liblapack.so,
 Standards-Version: 3.9.8
 Homepage: https://github.com/torch/torch7
 
