@@ -1,3 +1,4 @@
+Forward: yes. https://github.com/torch/torch7/pull/739
 diff --git a/ROADMAP.md b/ROADMAP.md
 index cb9c5ad..d906126 100644
 --- a/ROADMAP.md
