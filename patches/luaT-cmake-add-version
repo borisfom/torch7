@@ -1,5 +1,5 @@
 add cmake versioning for libluaT.so
-Fowrad: not yet
+Fowrad: merged upstream. https://github.com/torch/torch7/pull/733
 --- a/lib/luaT/CMakeLists.txt
 +++ b/lib/luaT/CMakeLists.txt
 @@ -13,6 +13,10 @@
