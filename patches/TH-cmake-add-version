@@ -1,5 +1,5 @@
 add versioning for libTH.so
-Foward: yes. https://github.com/torch/torch7/pull/738
+Forward: yes. https://github.com/torch/torch7/pull/738
 --- a/lib/TH/CMakeLists.txt
 +++ b/lib/TH/CMakeLists.txt
 @@ -137,6 +137,10 @@
