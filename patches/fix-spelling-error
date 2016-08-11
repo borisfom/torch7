@@ -1,10 +1,47 @@
-Fix spelling
-
-Forwarded: not yet
-
+diff --git a/ROADMAP.md b/ROADMAP.md
+index cb9c5ad..d906126 100644
+--- a/ROADMAP.md
++++ b/ROADMAP.md
+@@ -84,7 +84,7 @@ The roadmap focuses on five separate things
+ 		   Also, I agree, I actually could not install iTorch on my laptop 
+                    before cvpr tutorial somehow, it did not want to work :).
+   - **soumith**: I think we should propose a common display API that any interface can implement, 
+-                 that way the users dont need to change scripts across different UI backends.
++                 that way the users don't need to change scripts across different UI backends.
+ 	         Also, szym/display is a good candidate for the Web UI, ITorch is indeed a bit of a pain to install.
+ 
+   - Should we endorse iTorch for everyone to use? 
+diff --git a/Tensor.lua b/Tensor.lua
+index 0d573aa..b4b3e95 100644
+--- a/Tensor.lua
++++ b/Tensor.lua
+@@ -389,7 +389,7 @@ torch.repeatTensor = Tensor.repeatTensor
+ --- One of the size elements can be -1,
+  --- a new LongStorage is then returned.
+  --- The length of the unspecified dimension
+- --- is infered from the number of remaining elements.
++ --- is inferred from the number of remaining elements.
+ local function specifyFully(size, nElements)
+     local nCoveredElements = 1
+     local remainingDim = nil
+diff --git a/Tester.lua b/Tester.lua
+index a3b3ff3..f512edb 100644
+--- a/Tester.lua
++++ b/Tester.lua
+@@ -236,7 +236,7 @@ function Tester:_assertTensorEqOrNeq(ta, tb, negate, ...)
+    if self._assertTensorEqIgnoresDims and (not negate) and success
+          and not ta:isSameSizeAs(tb) then
+      self:_warning("Tensors have the same content but different dimensions. "
+-                   .. "For backwards compatability, they are considered equal, "
++                   .. "For backwards compatibility, they are considered equal, "
+                    .. "but this may change in the future. Consider using :eq "
+                    .. "to check for equality instead.")
+    end
+diff --git a/lib/TH/THDiskFile.c b/lib/TH/THDiskFile.c
+index dff9710..7064b7f 100644
 --- a/lib/TH/THDiskFile.c
 +++ b/lib/TH/THDiskFile.c
-@@ -207,7 +207,7 @@
+@@ -207,7 +207,7 @@ static size_t THDiskFile_position(THFile *self)
    if (offset > -1)
        return (size_t)offset;
    else if(!dfself->file.isQuiet)
@@ -13,3 +50,42 @@ Forwarded: not yet
  
    return 0;
  }
+diff --git a/lib/TH/generic/THTensorRandom.c b/lib/TH/generic/THTensorRandom.c
+index f8097c8..514d3dd 100644
+--- a/lib/TH/generic/THTensorRandom.c
++++ b/lib/TH/generic/THTensorRandom.c
+@@ -119,7 +119,7 @@ void THTensor_(multinomial)(THLongTensor *self, THGenerator *_generator, THTenso
+     THArgCheckWithCleanup((sum > 0), THCleanup(THDoubleTensor_free(cum_dist);), 2,
+                           "invalid multinomial distribution (sum of probabilities <= 0)");
+     /* normalize cumulative probability distribution so that last val is 1
+-    i.e. dosen't assume original prob_dist row sums to one */
++    i.e. doesn't assume original prob_dist row sums to one */
+     if ( (sum > 0) || ( ( sum < 1.00001) && (sum > 0.99999) ) )
+     {
+       for (j=0; j<n_categories; j++)
+diff --git a/lib/luaT/README.md b/lib/luaT/README.md
+index 431e37f..f28d143 100644
+--- a/lib/luaT/README.md
++++ b/lib/luaT/README.md
+@@ -237,7 +237,7 @@ shall not be freed. It is a pointer inside `tname` string.
+ 
+ <a name="luat_classmodulename"/>
+ ### int luaT_classmodulename(const char *tname, char *parent_name) ###
+-Alias to `luaT_fullparentname ` for ensuring backwards compatibilty; 
++Alias to `luaT_fullparentname ` for ensuring backwards compatibility; 
+ use of `luaT_fullparentname` is preferred.
+ 
+ <a name="luat_fullparentname"/>
+diff --git a/test/test.lua b/test/test.lua
+index 20ca035..fc5228c 100644
+--- a/test/test.lua
++++ b/test/test.lua
+@@ -183,7 +183,7 @@ function torchtest.rsqrt()
+ end
+ 
+ function torchtest.sigmoid()
+-   -- cant use genericSingleOpTest, since `math.sigmoid` doesnt exist, have to use
++   -- can't use genericSingleOpTest, since `math.sigmoid` doesn't exist, have to use
+    -- `torch.sigmoid` instead
+    local inputValues = {-1000,-1,0,0.5,1,2,1000}
+    local expectedOutput = {0.0000, 0.2689, 0.5, 0.6225, 0.7311, 0.8808, 1.000}
