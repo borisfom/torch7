@@ -1,0 +1,4 @@
+# this library generally works as lua extension, and
+# is not a general library. I name it as libtorch-th
+# to avoid polluting package name space.
+libtorch-th: package-name-doesnt-match-sonames

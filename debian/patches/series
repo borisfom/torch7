@@ -1,0 +1,4 @@
+# You must remove unused comment lines for the released package.
+fix-spelling-error
+TH-cmake-add-version
+luaT-cmake-add-version

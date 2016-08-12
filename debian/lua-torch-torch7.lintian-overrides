@@ -1,0 +1,3 @@
+# the contained shared libraries work as lua extension, and
+# are generally not general libraries.
+lua-torch-torch7: package-name-doesnt-match-sonames

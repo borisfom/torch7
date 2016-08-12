@@ -1,0 +1,4 @@
+debian/lua-torch-torch7-dev.install
+debian/lua-torch-torch7.install
+debian/lua_versions
+debian/trash
