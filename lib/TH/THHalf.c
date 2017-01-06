@@ -49,14 +49,28 @@
  * Users Notice.
  */
 
+
+THHalf TH_float2half(float f)
+{
+  THHalf h;
+  h.x = TH_float2half_raw(*(unsigned*)&f);
+  return h;
+}
+
+TH_API float  TH_half2float(THHalf h)
+{
+  unsigned f = TH_half2float_raw(h.x);
+  return *(float*)&f;
+}
+
 // Host functions for converting between FP32 and FP16 formats
 // Paulius Micikevicius (pauliusm@nvidia.com)
 
-float TH_half2float(THHalf h)
+unsigned TH_half2float_raw(unsigned h)
 {
-    unsigned sign = ((h.x >> 15) & 1);
-    unsigned exponent = ((h.x >> 10) & 0x1f);
-    unsigned mantissa = ((h.x & 0x3ff) << 13);
+    unsigned sign = ((h >> 15) & 1);
+    unsigned exponent = ((h >> 10) & 0x1f);
+    unsigned mantissa = ((h & 0x3ff) << 13);
 
     if (exponent == 0x1f) {  /* NaN or Inf */
         mantissa = (mantissa ? (sign = 0, 0x7fffff) : 0);
@@ -76,35 +90,28 @@ float TH_half2float(THHalf h)
         exponent += 0x70;
     }
 
-    int temp = ((sign << 31) | (exponent << 23) | mantissa);
-
-    return *((float*)((void*)&temp));
+    return ((sign << 31) | (exponent << 23) | mantissa);
 }
 
-THHalf TH_float2half(float f)
+unsigned TH_float2half_raw(unsigned u)
 {
-    THHalf ret;
 
-    unsigned x = *((int*)(void*)(&f));
-    unsigned u = (x & 0x7fffffff), remainder, shift, lsb, lsb_s1, lsb_m1;
+    unsigned remainder, shift, lsb, lsb_s1, lsb_m1;
     unsigned sign, exponent, mantissa;
 
     // Get rid of +NaN/-NaN case first.
     if (u > 0x7f800000) {
-        ret.x = 0x7fffU;
-        return ret;
+        return 0x7fffU;
     }
   
-    sign = ((x >> 16) & 0x8000);
+    sign = ((u >> 16) & 0x8000);
   
     // Get rid of +Inf/-Inf, +0/-0.
     if (u > 0x477fefff) {
-        ret.x = sign | 0x7c00U;
-        return ret;
+        return sign | 0x7c00U;
     }
     if (u < 0x33000001) {
-        ret.x = (sign | 0x0000);
-        return ret;
+        return (sign | 0x0000);
     }
 
     exponent = ((u >> 23) & 0xff);
@@ -133,6 +140,5 @@ THHalf TH_float2half(float f)
         }
     }  
 
-    ret.x = (sign | (exponent << 10) | mantissa);  
-    return ret;
+    return (sign | (exponent << 10) | mantissa);  
 }
